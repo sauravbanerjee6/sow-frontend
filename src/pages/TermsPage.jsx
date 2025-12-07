@@ -17,6 +17,7 @@ function TermsPage() {
 
   const [showPassword, setShowPassword] = useState(false);
   const [isLangListOpen, setIsLangListOpen] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const currentFlag = lang === "en" ? en : se;
   const currentLangLabel = texts.language_label;
@@ -59,30 +60,40 @@ function TermsPage() {
   return (
     <div className="terms-page">
       <header className="terms-header">
-        <div className="terms-header-login">
+        <div className="terms-header-left">
+          <button
+            type="button"
+            className="menu-toggle"
+            onClick={() => setIsMenuOpen((prev) => !prev)}
+          >
+            ☰
+          </button>
+
           <img src={diamond} className="terms-header-logo" />
         </div>
 
         <div className="terms-header-right">
-          <button className="terms-header-right-button">
-            {texts.home_button}
-          </button>
+          <div className="terms-header-buttons">
+            <button className="terms-header-right-button">
+              {texts.home_button}
+            </button>
 
-          <button className="terms-header-right-button">
-            {texts.order_button}
-          </button>
+            <button className="terms-header-right-button">
+              {texts.order_button}
+            </button>
 
-          <button className="terms-header-right-button">
-            {texts.customer_button}
-          </button>
+            <button className="terms-header-right-button">
+              {texts.customer_button}
+            </button>
 
-          <button className="terms-header-right-button">
-            {texts.aboutUs_button}
-          </button>
+            <button className="terms-header-right-button">
+              {texts.aboutUs_button}
+            </button>
 
-          <button className="terms-header-right-button">
-            {texts.contactUs_button}
-          </button>
+            <button className="terms-header-right-button">
+              {texts.contactUs_button}
+            </button>
+          </div>
 
           <div className="language-dropdown">
             <button
@@ -124,6 +135,30 @@ function TermsPage() {
           </div>
         </div>
       </header>
+
+      {isMenuOpen && (
+        <div className="mobile-menu">
+          <button className="terms-header-right-button">
+            {texts.home_button}
+          </button>
+
+          <button className="terms-header-right-button">
+            {texts.order_button}
+          </button>
+
+          <button className="terms-header-right-button">
+            {texts.customer_button}
+          </button>
+
+          <button className="terms-header-right-button">
+            {texts.aboutUs_button}
+          </button>
+
+          <button className="terms-header-right-button">
+            {texts.contactUs_button}
+          </button>
+        </div>
+      )}
 
       {loading && <div>Loading...</div>}
       {error && <div className="error">{error}</div>}
