@@ -29,3 +29,31 @@ export async function getTerms(lang) {
     return res.json();
   } catch (error) {}
 }
+
+export async function getPriceList() {
+  const res = await fetch(`${API_BASE_URL}/pricelist`);
+  if (!res.ok) {
+    const data = await res.json().catch(() => ({}));
+    throw new Error(data.message || "Failed to load pricelist!");
+  }
+
+  return res.json();
+}
+
+export async function updatePriceItem(id, payload) {
+  const res = await fetch(
+    `${API_BASE_URL}/pricelist/${encodeURIComponent(id)}`,
+    {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload),
+    }
+  );
+
+  if (!res.ok) {
+    const body = await res.json().catch(() => ({}));
+    throw new Error(body.message || "Failed to update item.");
+  }
+
+  return res.json();
+}

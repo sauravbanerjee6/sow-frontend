@@ -5,6 +5,7 @@ import "./App.css";
 import LoginPage from "./pages/LoginPage";
 import { Route, Routes, Navigate } from "react-router-dom";
 import TermsPage from "./pages/TermsPage";
+import PriceListPage from "./pages/PricelistPage";
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
       <Route path="/" element={<Navigate to="/login" replace />} />
       <Route path="/login" element={<LoginPage />} />
       <Route path="/terms" element={<TermsPage />} />
+      <Route path="/pricelist" element={<PriceListPage />} />
     </Routes>
   );
 }
