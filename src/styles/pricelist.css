@@ -1,31 +1,3 @@
-.desktop-only {
-  display: block;
-}
-.mobile-only {
-  display: none;
-}
-
-.sidebar-menu li.mobile-only {
-  display: none;
-  padding: 12px 24px;
-  color: var(--muted);
-  font-size: 14px;
-  cursor: pointer;
-  transition: 0.2s;
-  display: flex;
-  align-items: center;
-}
-
-.sidebar-menu li.mobile-only.logout-like,
-.sidebar-menu li.mobile-only:last-of-type {
-  color: #d32f2f;
-}
-.sidebar-menu li.mobile-only.logout-like:hover,
-.sidebar-menu li.mobile-only:last-of-type:hover {
-  background: #fce4ec;
-  color: #c62828;
-}
-
 * {
   margin: 0;
   padding: 0;
@@ -527,9 +499,9 @@ body {
     flex-direction: column;
     height: calc(100vh - var(--header-height));
   }
-  .pricelist-sidebar {
+  /* .pricelist-sidebar {
     display: none;
-  }
+  } */
   .pricelist-main {
     width: 100%;
     background: #f5f7fa;
@@ -734,9 +706,9 @@ body {
     flex-direction: column;
     height: calc(100vh - var(--header-height));
   }
-  .pricelist-sidebar {
+  /* .pricelist-sidebar {
     display: none;
-  }
+  } */
   .pricelist-main {
     width: 100%;
     background: #f5f7fa;
@@ -933,24 +905,15 @@ body {
   .sidebar-backdrop.show {
     display: block;
   }
-
-  .desktop-only {
-    display: none !important;
+  .sidebar-menu li {
+    display: none;
   }
-  .mobile-only {
-    display: flex !important;
+  .sidebar-menu-title {
+    display: block;
   }
-  .sidebar-menu li.mobile-only {
-    justify-content: flex-start;
-  }
-
-  .sidebar-menu li.mobile-only:last-of-type {
-    margin-top: 16px;
-    color: #d32f2f;
-  }
-  .sidebar-menu li.mobile-only:last-of-type:hover {
-    background: #fce4ec;
-    color: #c62828;
+  .sidebar-menu li:nth-last-child(2),
+  .sidebar-menu li:nth-last-child(1) {
+    display: block;
   }
 }
 
@@ -1029,37 +992,28 @@ body {
   .pricelist-table-header {
     display: none;
   }
-}
-
-.pricelist-sidebar.open {
-  transform: translateX(0);
+  .pricelist-sidebar.open {
+    transform: translateX(0) !important;
+  }
 }
 
 @media (min-width: 1025px) {
   .pricelist-sidebar {
-    transform: none !important;
-    position: relative !important;
-    display: block !important;
-    left: auto !important;
-    top: auto !important;
-    bottom: auto !important;
-    width: var(--sidebar-width) !important;
-    box-shadow: none !important;
+    transform: none;
+    position: relative;
+    left: auto;
+    top: auto;
+    bottom: auto;
+    width: var(--sidebar-width);
+    box-shadow: none;
   }
   .pricelist-sidebar.open {
-    transform: none !important;
+    transform: none;
   }
   .menu-btn {
-    display: none !important;
+    display: none;
   }
   .sidebar-backdrop {
-    display: none !important;
-  }
-
-  .desktop-only {
-    display: block !important;
-  }
-  .mobile-only {
-    display: none !important;
+    display: none;
   }
 }
