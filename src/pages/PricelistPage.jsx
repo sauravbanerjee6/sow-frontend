@@ -164,30 +164,62 @@ export default function PricelistPage() {
 
       <div className="pricelist-content">
         <aside className={`pricelist-sidebar ${sidebarOpen ? "open" : ""}`}>
-          <div className="sidebar-top">
-            {/* <button
-              className="sidebar-close"
-              onClick={closeSidebar}
-              aria-label="Close menu"
-            >
-              ✕
-            </button> */}
-          </div>
+          <button
+            className="sidebar-close"
+            onClick={closeSidebar}
+            aria-label="Close menu"
+          >
+            ✕
+          </button>
           <ul className="sidebar-menu">
-            <li className="sidebar-menu-title">{texts.menu_title || "MENU"}</li>
-            <li>{texts.invoices || "Invoices"}</li>
-            <li>{texts.customers || "Customers"}</li>
-            <li>{texts.my_business || "My Business"}</li>
-            <li>{texts.invoice_journal || "Invoice Journal"}</li>
-            <li className="active">{texts.price_list || "Price List"}</li>
-            <li>{texts.multiple_invoicing || "Multiple Invoicing"}</li>
-            <li>{texts.unpaid_invoices || "Unpaid Invoices"}</li>
-            <li>{texts.offer || "Offer"}</li>
-            <li>{texts.inventory_control || "Inventory Control"}</li>
-            <li>{texts.member_invoicing || "Member Invoicing"}</li>
-            <li>{texts.import_export || "Import/Export"}</li>
-            <li onClick={() => navigate("/terms")}>{"Terms"}</li>
-            <li onClick={() => logout()}>{texts.logout || "Log out"}</li>
+            <li className="sidebar-menu-title desktop-only">
+              {texts.menu_title || "MENU"}
+            </li>
+            <li className="desktop-only">{texts.invoices || "Invoices"}</li>
+            <li className="desktop-only">{texts.customers || "Customers"}</li>
+            <li className="desktop-only">
+              {texts.my_business || "My Business"}
+            </li>
+            <li className="desktop-only">
+              {texts.invoice_journal || "Invoice Journal"}
+            </li>
+            <li className="active desktop-only">
+              {texts.price_list || "Price List"}
+            </li>
+            <li className="desktop-only">
+              {texts.multiple_invoicing || "Multiple Invoicing"}
+            </li>
+            <li className="desktop-only">
+              {texts.unpaid_invoices || "Unpaid Invoices"}
+            </li>
+            <li className="desktop-only">{texts.offer || "Offer"}</li>
+            <li className="desktop-only">
+              {texts.inventory_control || "Inventory Control"}
+            </li>
+            <li className="desktop-only">
+              {texts.member_invoicing || "Member Invoicing"}
+            </li>
+            <li className="desktop-only">
+              {texts.import_export || "Import/Export"}
+            </li>
+            <li
+              className="mobile-only"
+              onClick={() => {
+                navigate("/terms");
+                closeSidebar();
+              }}
+            >
+              Terms
+            </li>
+            <li
+              className="mobile-only"
+              onClick={() => {
+                logout();
+                closeSidebar();
+              }}
+            >
+              {texts.logout || "Log out"}
+            </li>
           </ul>
         </aside>
 
@@ -379,7 +411,7 @@ export default function PricelistPage() {
       </div>
 
       {sidebarOpen && (
-        <div className="sidebar-backdrop" onClick={closeSidebar} />
+        <div className="sidebar-backdrop show" onClick={closeSidebar} />
       )}
     </div>
   );
