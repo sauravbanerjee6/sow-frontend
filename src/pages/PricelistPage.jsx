@@ -5,6 +5,7 @@ import avatar from "../assets/avatar.png";
 import en from "../assets/en.png";
 import se from "../assets/se.png";
 import { logout } from "../services/auth";
+import { useNavigate } from "react-router-dom";
 
 export default function PricelistPage() {
   const [lang, setLang] = useState("en");
@@ -19,6 +20,8 @@ export default function PricelistPage() {
   const [articleQuery, setArticleQuery] = useState("");
   const [productQuery, setProductQuery] = useState("");
   const [sidebarOpen, setSidebarOpen] = useState(false);
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     async function load() {
@@ -183,6 +186,7 @@ export default function PricelistPage() {
             <li>{texts.inventory_control || "Inventory Control"}</li>
             <li>{texts.member_invoicing || "Member Invoicing"}</li>
             <li>{texts.import_export || "Import/Export"}</li>
+            <li onClick={() => navigate("/terms")}>{"Terms"}</li>
             <li onClick={() => logout()}>{texts.logout || "Log out"}</li>
           </ul>
         </aside>

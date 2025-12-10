@@ -4,6 +4,7 @@ import "../styles/terms.css";
 import diamond from "../assets/diamond.png";
 import en from "../assets/en.png";
 import se from "../assets/se.png";
+import { useNavigate } from "react-router-dom";
 
 function TermsPage() {
   const [lang, setLang] = useState("en");
@@ -21,6 +22,8 @@ function TermsPage() {
 
   const currentFlag = lang === "en" ? en : se;
   const currentLangLabel = texts.language_label;
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     async function loadTerms() {
@@ -166,7 +169,9 @@ function TermsPage() {
       {!loading && !error && (
         <div className="terms-content">
           <h1 className="terms-label">{texts.terms_label}</h1>
-          <button className="back-button">{texts.back_button_text}</button>
+          <button className="back-button" onClick={() => navigate(-1)}>
+            {texts.back_button_text}
+          </button>
 
           <div className="terms-text">
             {content.split("\n").map((line, idx) => (
@@ -174,7 +179,9 @@ function TermsPage() {
             ))}
           </div>
 
-          <button className="back-button">{texts.back_button_text}</button>
+          <button className="back-button" onClick={() => navigate(-1)}>
+            {texts.back_button_text}
+          </button>
         </div>
       )}
     </div>
