@@ -7,6 +7,7 @@ import hidePasswordIcon from "../assets/hide_password.png";
 import diamond from "../assets/diamond.png";
 import en from "../assets/en.png";
 import se from "../assets/se.png";
+import { login } from "../services/auth.js";
 
 function LoginPage() {
   const navigate = useNavigate();
@@ -45,16 +46,24 @@ function LoginPage() {
 
   async function handleSubmit(e) {
     e.preventDefault();
-    // setLoginError("");
-    // setLoginLoading(true);
-    console.log(email);
 
-    // try {
-    //     const data = await login(email,password);
-    //     saveToken
-    // } catch (error) {
+    setLoginError("");
+    setLoginLoading(true);
 
-    // }
+    if (!email || !password) {
+      setLoginError("Please enter email and password!");
+      setLoginLoading(false);
+      return;
+    }
+
+    try {
+      const data = await login(email, password);
+      navigate("/pricelist");
+    } catch (error) {
+      setLoginError(error.message);
+    } finally {
+      setLoginLoading(false);
+    }
   }
 
   return (
