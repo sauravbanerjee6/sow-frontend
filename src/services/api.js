@@ -1,6 +1,6 @@
 import { authFetch } from "./auth";
 
-const API_BASE_URL = "http://localhost:3002";
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
 export async function getUiTexts(screen, lang) {
   try {

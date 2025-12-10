@@ -1,5 +1,5 @@
 // src/utils/auth.js
-const API_BASE_URL = "http://localhost:3002";
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 const TOKEN_KEY = "sow_token";
 
 export function setToken(token) {
